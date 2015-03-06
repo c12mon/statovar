@@ -1,0 +1,7 @@
+program Test
+	var X, Y, Z
+	begin
+		X : = 5;
+		Y : = 7;
+		Z = 5 . 7;
+	end

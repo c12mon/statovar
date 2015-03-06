@@ -1,0 +1,29 @@
+program Test
+	var X, Y, Z
+	proc Sub1(A, B, C)
+		var X
+	proc Sub2()
+	var X
+	begin
+		X := 5.2
+		
+	end
+	proc Sub3()
+	begin
+		X := (7.4 . 4.6);
+		A := (1.5 . 4.5);
+		Sub3() 
+	end
+	begin
+		X := 4.6;
+		Sub2();
+		Z := 11.2;
+		C := X;
+		Z := (Z . (6.7 . C))
+	end
+	begin
+		X := 13.3;
+		Y := 15.6;
+		Z := 16.1;
+		Sub1(X,Y,Z)
+	end

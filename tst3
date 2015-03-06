@@ -1,0 +1,8 @@
+program Test
+	var X, Y, Z
+	begin
+		X := 3;
+		Y := 5;
+		Z := (~Y)
+	end
+
