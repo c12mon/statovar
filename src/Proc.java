@@ -34,27 +34,20 @@ public class Proc {
         //
         // fill in your code here to execute the assignment
         //
-        System.err.println("Gör execassign på "+ a.left_hand_side + " till " + a.right_hand_side.eval());
 
         Stack.getCellOf(a.left_hand_side)[0] = a.right_hand_side.eval();
-        System.err.println("hej: " + a.left_hand_side);
     }
   
     private void execProcCall(ProcCall c) {
         //
         // fill in your code here to perform the procedure call
 
-        System.err.println("GÖR EN PROCCALL");
 
         if ((c.condition_y == null) || !c.condition_y.equals(c.condition_y)) {
             Boolean exists = false;
             for (int i = 0; i < subproc.size(); i++) {
-               // System.err.println(subproc.get(i).name + " " + c.name);
-
                 if (subproc.get(i).name.equals(c.name)) {
-
                     exists = true;
-                    System.err.println("DEN FINNS");
                 }
             }
             if (exists) {
@@ -73,11 +66,9 @@ public class Proc {
 
             } else {
                 if (parent != null) parent.execProcCall(c);
-                else System.err.println("PARENT ÄR NULL");
             }
 
         } else {
-            System.err.println("nu är det null eller lika");
             return;
         }
     }
@@ -87,28 +78,19 @@ public class Proc {
         // fill in your code here to create and initialize an activation record
         //
 
-        System.err.println("Gör init record\n");
         Stack.addRecord(calling_depth-1);
-        System.err.println("par : " + actual.size());
-
-
-        System.err.println("depth " + calling_depth);
 
 
         for (int i = 0; i<formal_par.size(); i++){
-            System.err.println("act: " + actual.get(i));
-            System.err.println("formal par :" + formal_par.get(i));
 
             Object[] stackobj = Stack.getCellOf(actual.get(i));
             Object[] stackclone = stackobj;
-            System.err.println("formal: " + formal_par.get(i));
             Stack.addVariable(formal_par.get(i), stackclone);
         }
 
         for (int i = 0; i<local_var.size(); i++) {
             Stack.addVariable(local_var.get(i), null);
         }
-
 
     }
   

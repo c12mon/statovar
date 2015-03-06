@@ -19,7 +19,7 @@ program Test
 		Sub2();
 		Z := 11.2;
 		C := X;
-		Z := (Z . (6.7 . C))
+		Z := (X . (6.7 . C))
 	end
 	begin
 		X := 13.3;

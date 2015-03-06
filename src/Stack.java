@@ -28,20 +28,13 @@ public class Stack extends Vector<Stack.ActRecord> {
 		//
 		// fill in your code here
 		//
-
-		System.err.println("namn: " + name);
 		ActRecord v = st.elementAt(st.size() - 1);
 		while (v.getCellOf(name) == null) {
-			System.err.println("Kommer detta?? ");
 			if (v.static_link == -1){
-				System.err.println("FINNS INTE " + name);
 				System.exit(1);
-				break;
 			}
 			v = st.elementAt(v.static_link);
-			System.err.println("Link : " + v.static_link);
 		}
-		System.err.println("name:" + name);
 		return v.getCellOf(name);
 	}
 

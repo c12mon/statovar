@@ -46,8 +46,6 @@ public class Expression {
         //
         // fill in your code here to evaluate this expression
         //
-
-
         if (type == CONSTANT) {
             return Double.valueOf(const_value);
         }
@@ -56,16 +54,12 @@ public class Expression {
             return Stack.getCellContentsOf(var_name);
         }
 
-        System.err.println("" + subexpr[0].var_name);
-
         if (type == TILDE_APPLICATION) {
-
-            return ((Double) Stack.getCellContentsOf(subexpr[0].var_name)) * -1;
+            return (Double) (subexpr[0]).eval() * -1;
         }
 
         if (type == DOT_APPLICATION) {
-
-            return (Double) Stack.getCellContentsOf(subexpr[0].var_name) + (Double) Stack.getCellContentsOf(subexpr[1].var_name);
+            return (Double) (subexpr[0]).eval() + (Double) (subexpr[1]).eval();
         }
 
         return null; // dummy return to be able to compile this version
