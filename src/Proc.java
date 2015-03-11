@@ -44,33 +44,24 @@ public class Proc {
 
 
         if ((c.condition_y == null) || !c.condition_y.equals(c.condition_y)) {
-            Boolean exists = false;
-            for (int i = 0; i < subproc.size(); i++) {
-                if (subproc.get(i).name.equals(c.name)) {
-                    exists = true;
-                }
-            }
-            if (exists) {
-                for (int i = 0; i < subproc.size(); i++) {
-                   // System.err.println(subproc.get(i).name + " " + c.name);
-
-                    if (subproc.get(i).name.equals(c.name)) {
-                        Proc sub = subproc.get(i);
-                       // System.err.println(c.name);
-                        sub.initRecord(c.actual_par, static_depth);
-                        sub.execute();
-                        Stack.deleteRecord();
-                        break;
-                    }
-                }
-
-            } else {
-                if (parent != null) parent.execProcCall(c);
-            }
-
+                Proc sub = revursive(this, c.name);
+                sub.initRecord(c.actual_par, static_depth - sub.static_depth + 1);
+                sub.execute();
+                Stack.deleteRecord();
         } else {
             return;
         }
+    }
+
+    private Proc revursive(Proc pc, String name) {
+
+        for(int i = 0; i < pc.subproc.size(); i++) {
+            if(pc.subproc.get(i).name.equals(name)) {
+                return pc.subproc.get(i);
+            }
+        }
+
+       return revursive(pc.parent, name);
     }
   
     protected void initRecord(Vector<String> actual, int calling_depth) {
@@ -78,7 +69,7 @@ public class Proc {
         // fill in your code here to create and initialize an activation record
         //
 
-        Stack.addRecord(calling_depth-1);
+        Stack.addRecord(calling_depth);
 
 
         for (int i = 0; i<formal_par.size(); i++){
